@@ -29,12 +29,20 @@ namespace ConsoleApp2
             System.Console.WriteLine("Enter price per day:");
             var ppday = double.Parse(Console.ReadLine());
 
-            var rent = new CarRental(pickupDate, returnDate, vehincle);
+            var rent1 = new CarRental(pickupDate, returnDate, vehincle);
+            var rent2 = new CarRental(pickupDate, returnDate, vehincle);
 
-            var rentalService = new RentalService(pphour, ppday);
-            rentalService.ProcessInvoice(rent);
+            var brazillianRent = new RentalService(pphour, ppday, new BrazilTaxService());
+            brazillianRent.ProcessInvoice(rent1);
 
-            Console.WriteLine(rent.Invoice.ToString());
+            var americanRent= new RentalService(pphour, ppday, new UsTaxService());
+            americanRent.ProcessInvoice(rent2);
+
+            Console.Write("Brazilian Invoice: \n");
+            Console.WriteLine(rent1.Invoice.ToString());
+            Console.WriteLine();
+            Console.WriteLine("American Invoice:");
+            Console.WriteLine(rent2.Invoice.ToString());
         }
     }
 }

@@ -1,0 +1,6 @@
+﻿No fim das contas, a Interface serve para simplificar a manutenção de códigos.
+
+No exemplo desta atividade, criou uma interface ITaxService com uma função genérica Tax(amount).
+Essa função pode ser usada em diferentes classes de taxas, por exemplo BrazilTaxService ou UsTaxService, por exemplo. Isso permite maior flexibilidade durante as manutenções, pois no construtor do RentalService, pedimos um item que implemente a interface ITaxService, mas quando criamos um objeto RentalService, podemos especificar se a interface vai receber a ação Tax do BrazilTaxService ou UsTaxService.
+
+Com isso, se precisar fazer alguma modificação, basta realizá-la dentro da classe do serviço de taxa ou aplicar uma classe de outro serviço novo recém criado
